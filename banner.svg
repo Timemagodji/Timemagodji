@@ -8,7 +8,7 @@
       <stop offset="100%" stop-color="#121b52"/>
     </linearGradient>
 
-    <!-- Aurora Wave Gradients (Cobalt, Royal Blue & Indigo) -->
+    <!-- Aurora Wave Gradients (Cobalt, Royal Blue and Indigo) -->
     <linearGradient id="auroraGlow1" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0"/>
       <stop offset="15%" stop-color="#3b82f6" stop-opacity="0.35"/>
@@ -38,7 +38,7 @@
       <rect width="1200" height="240" fill="url(#auroraMaskGrad)"/>
     </mask>
 
-    <!-- Meteor Gradients (Down-Right: x1=0% y1=0% to x2=100% y2=100%) -->
+    <!-- Meteor Gradients (Down-Right: tail at top-left, head at bottom-right) -->
     <linearGradient id="mGradWhiteR" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
       <stop offset="60%" stop-color="#f8fafc" stop-opacity="0.6"/>
@@ -57,7 +57,7 @@
       <stop offset="100%" stop-color="#c7d2fe" stop-opacity="1"/>
     </linearGradient>
 
-    <!-- Meteor Gradients (Down-Left: x1=100% y1=0% to x2=0% y2=100%) -->
+    <!-- Meteor Gradients (Down-Left: tail at top-right, head at bottom-left) -->
     <linearGradient id="mGradWhiteL" x1="100%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
       <stop offset="60%" stop-color="#f8fafc" stop-opacity="0.6"/>
@@ -91,7 +91,7 @@
   </defs>
 
   <style>
-    /* 1. Sky drift right (เร่งความเร็วการเคลื่อนท้องฟ้าจาก 45s เป็น 12s) */
+    /* 1. Fast Sky Drift (เคลื่อนท้องฟ้าเร็วขึ้น ชัดเจน สมูท) */
     @keyframes driftRight {
       0% { transform: translateX(-100px); }
       100% { transform: translateX(50px); }
@@ -100,7 +100,7 @@
       animation: driftRight 12s ease-in-out infinite alternate;
     }
 
-    /* 2. Aurora wave ripples (เร่งคลื่นแสงเหนือให้พริ้วไหวเร็วขึ้น) */
+    /* 2. Fast Aurora Ripples (คลื่นแสงเหนือพลิ้วไหวรวดเร็ว มีชีวิตชีวา) */
     @keyframes auroraRipple1 {
       0%, 100% {
         transform: translateX(-40px) skewX(-2deg) scaleY(1);
@@ -138,54 +138,58 @@
       transform-origin: 450px 100px;
     }
 
-    /* 3. Star pulse animation (เร่งการกะพริบของดวงดาว) */
+    /* 3. Star pulse animation */
     @keyframes starPulseA { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
     @keyframes starPulseB { 0%, 100% { opacity: 0.95; } 50% { opacity: 0.2; } }
     .sp-a { animation: starPulseA 1.6s infinite ease-in-out; }
     .sp-b { animation: starPulseB 2.0s infinite ease-in-out; }
 
-    /* 4. Multi-Directional and Full-Screen Meteor Shower */
-    @keyframes fallR {
+    /* 4. Progressive Sweeping Meteor Keyframes (พุ่งเร็ว 0.7s) */
+    /* ทิศทาง A: พุ่งเฉียงลงขวา (East-bound) */
+    @keyframes fallEast {
       0% { transform: translate(0, 0); opacity: 0; }
       3% { opacity: 1; }
-      14% { transform: translate(210px, 145px); opacity: 0.9; }
-      17% { transform: translate(240px, 165px); opacity: 0; }
-      100% { transform: translate(240px, 165px); opacity: 0; }
+      13% { transform: translate(160px, 120px); opacity: 0.9; }
+      16% { transform: translate(180px, 135px); opacity: 0; }
+      100% { transform: translate(180px, 135px); opacity: 0; }
     }
 
-    @keyframes fallL {
+    /* ทิศทาง B: พุ่งชันทางขวา (Steep East-bound สำรองสำหรับฝั่งขวา) */
+    @keyframes fallEastSteep {
       0% { transform: translate(0, 0); opacity: 0; }
       3% { opacity: 1; }
-      14% { transform: translate(-210px, 145px); opacity: 0.9; }
-      17% { transform: translate(-240px, 165px); opacity: 0; }
-      100% { transform: translate(-240px, 165px); opacity: 0; }
+      13% { transform: translate(90px, 140px); opacity: 0.9; }
+      16% { transform: translate(105px, 160px); opacity: 0; }
+      100% { transform: translate(105px, 160px); opacity: 0; }
     }
 
-    @keyframes fallS {
+    /* ทิศทาง C: พุ่งเฉียงลงซ้าย (West-bound สำหรับขอบขวาสุดพุ่งตัดกลับเข้าจอ) */
+    @keyframes fallWest {
       0% { transform: translate(0, 0); opacity: 0; }
       3% { opacity: 1; }
-      14% { transform: translate(110px, 190px); opacity: 0.9; }
-      17% { transform: translate(125px, 215px); opacity: 0; }
-      100% { transform: translate(125px, 215px); opacity: 0; }
+      13% { transform: translate(-100px, 135px); opacity: 0.9; }
+      16% { transform: translate(-115px, 155px); opacity: 0; }
+      100% { transform: translate(-115px, 155px); opacity: 0; }
     }
 
-    .m-r1 { opacity: 0; animation: fallR 4.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.2s; }
-    .m-r2 { opacity: 0; animation: fallR 5.1s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.5s; }
-    .m-r3 { opacity: 0; animation: fallR 4.7s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.7s; }
-    .m-r4 { opacity: 0; animation: fallR 5.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.6s; }
-    .m-r5 { opacity: 0; animation: fallR 4.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.1s; }
-    .m-r6 { opacity: 0; animation: fallR 5.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.2s; }
+    /* กำหนดจังหวะ Sweep จากซ้ายไปขวาเรื่อยๆ ตลอดรอบเวลา 5.2 วินาที */
+    /* Wave 1: เริ่มจากซ้ายสุด (x=50) ไล่ไปขวาสุด (x=860) */
+    .sw-1 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.0s; }
+    .sw-2 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.5s; }
+    .sw-3 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.0s; }
+    .sw-4 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.5s; }
+    .sw-5 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.0s; }
+    .sw-6 { opacity: 0; animation: fallEastSteep 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.5s; }
+    .sw-7 { opacity: 0; animation: fallWest 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.0s; }
 
-    .m-l1 { opacity: 0; animation: fallL 4.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.6s; }
-    .m-l2 { opacity: 0; animation: fallL 5.3s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.8s; }
-    .m-l3 { opacity: 0; animation: fallL 4.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.9s; }
-    .m-l4 { opacity: 0; animation: fallL 5.7s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.8s; }
-    .m-l5 { opacity: 0; animation: fallL 4.6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.9s; }
-
-    .m-s1 { opacity: 0; animation: fallS 4.9s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.4s; }
-    .m-s2 { opacity: 0; animation: fallS 5.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.7s; }
-    .m-s3 { opacity: 0; animation: fallS 4.3s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.1s; }
-    .m-s4 { opacity: 0; animation: fallS 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.4s; }
+    /* Wave 2: ระลอกที่ 2 เหลื่อมจังหวะ ไล่ตามจากซ้ายไปขวาติดๆ กัน */
+    .sw-8  { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.6s; }
+    .sw-9  { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.1s; }
+    .sw-10 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.6s; }
+    .sw-11 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.1s; }
+    .sw-12 { opacity: 0; animation: fallEast 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.6s; }
+    .sw-13 { opacity: 0; animation: fallEastSteep 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 4.1s; }
+    .sw-14 { opacity: 0; animation: fallWest 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 4.6s; }
   </style>
 
   <!-- Clip Path to avoid spillover -->
@@ -251,72 +255,80 @@
       <path class="aurora-wave2" d="M -80,85 Q 220,40 500,80 T 920,45 T 1100,75 L 1100,175 L -80,175 Z" fill="url(#auroraGlow2)"/>
     </g>
 
-    <!-- ==================== 3. ALL-REGION RANDOM METEOR SHOWER ==================== -->
+    <!-- ==================== 3. PROGRESSIVE SWEEPING METEORS (LEFT TO RIGHT) ==================== -->
     
-    <!-- [โซนฝั่งซ้าย: x = 0 - 300] -->
-    <g transform="translate(30, -25)" class="m-r1">
+    <!-- [Wave 1: ระลอกที่ 1 จุดเริ่มเลื่อนจากซ้ายสุดไปขวาสุดอย่างต่อเนื่อง] -->
+    <!-- จุด 1: x = 50 (ซ้ายสุด) -->
+    <g transform="translate(50, -20)" class="sw-1">
       <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(260, -25)" class="m-l1">
-      <line x1="50" y1="-28" x2="0" y2="0" stroke="url(#mGradBlueL)" stroke-width="2.3" stroke-linecap="round"/>
+    <!-- จุด 2: x = 200 (ขยับมาซ้ายกลาง) -->
+    <g transform="translate(200, -20)" class="sw-2">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.3" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.2" fill="#bae6fd" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(110, -25)" class="m-s1">
-      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.1" stroke-linecap="round"/>
+    <!-- จุด 3: x = 350 (ขยับมากลางซ้าย) -->
+    <g transform="translate(350, -20)" class="sw-3">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.1" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(-10, 15)" class="m-r2">
-      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.0" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
-    </g>
-
-    <!-- [โซนกลางจอ: x = 300 - 600] -->
-    <g transform="translate(330, -25)" class="m-r3">
-      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.4" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(540, -25)" class="m-l2">
-      <line x1="55" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigoL)" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(430, -25)" class="m-s2">
-      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.1" stroke-linecap="round"/>
+    <!-- จุด 4: x = 500 (ขยับมากลางจอ) -->
+    <g transform="translate(500, -20)" class="sw-4">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.1" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(370, 15)" class="m-r4">
+    <!-- จุด 5: x = 650 (ขยับมากลางขวา) -->
+    <g transform="translate(650, -20)" class="sw-5">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.3" fill="#93c5fd" filter="url(#starGlow)"/>
+    </g>
+    <!-- จุด 6: x = 780 (ขยับมาฝั่งขวา) -->
+    <g transform="translate(780, -20)" class="sw-6">
+      <line x1="-30" y1="-45" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
+    </g>
+    <!-- จุด 7: x = 860 (ขยับมาขวาสุด พุ่งตัดเข้าจอสวยงาม) -->
+    <g transform="translate(860, -10)" class="sw-7">
+      <line x1="45" y1="-32" x2="0" y2="0" stroke="url(#mGradBlueL)" stroke-width="2.3" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#bae6fd" filter="url(#starGlow)"/>
+    </g>
+
+    <!-- [Wave 2: ระลอกที่ 2 จุดเริ่มขยับตามจากซ้ายไปขวาเช่นกัน] -->
+    <!-- จุด 8: x = 120 (ซ้าย) -->
+    <g transform="translate(120, -15)" class="sw-8">
+      <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#bae6fd" filter="url(#starGlow)"/>
+    </g>
+    <!-- จุด 9: x = 270 (ซ้ายกลาง) -->
+    <g transform="translate(270, -15)" class="sw-9">
       <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.0" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
-
-    <!-- [โซนฝั่งขวา: x = 600 - 900 จัดเต็มเป็นพิเศษให้เห็นชัดเจนตลอดเวลา] -->
-    <g transform="translate(620, -25)" class="m-r5">
-      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.4" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.3" fill="#bae6fd" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(840, -25)" class="m-l3">
-      <line x1="55" y1="-31" x2="0" y2="0" stroke="url(#mGradWhiteL)" stroke-width="2.3" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(730, -25)" class="m-s3">
-      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(680, 15)" class="m-r6">
-      <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.1" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(890, 10)" class="m-l4">
-      <line x1="60" y1="-34" x2="0" y2="0" stroke="url(#mGradBlueL)" stroke-width="2.4" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(780, -25)" class="m-l5">
-      <line x1="50" y1="-28" x2="0" y2="0" stroke="url(#mGradIndigoL)" stroke-width="2.1" stroke-linecap="round"/>
+    <!-- จุด 10: x = 420 (กลางซ้าย) -->
+    <g transform="translate(420, -15)" class="sw-10">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.1" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(820, -25)" class="m-s4">
-      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.1" fill="#bae6fd" filter="url(#starGlow)"/>
+    <!-- จุด 11: x = 570 (กลางขวา) -->
+    <g transform="translate(570, -15)" class="sw-11">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.3" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
+    </g>
+    <!-- จุด 12: x = 720 (ฝั่งขวา) -->
+    <g transform="translate(720, -15)" class="sw-12">
+      <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.1" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#ffffff" filter="url(#starGlow)"/>
+    </g>
+    <!-- จุด 13: x = 820 (ขวาชัดเจน) -->
+    <g transform="translate(820, -15)" class="sw-13">
+      <line x1="-30" y1="-45" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
+    </g>
+    <!-- จุด 14: x = 880 (ขวาสุด) -->
+    <g transform="translate(880, 10)" class="sw-14">
+      <line x1="50" y1="-30" x2="0" y2="0" stroke="url(#mGradWhiteL)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
 
     <!-- ==================== 4. PINE FOREST SILHOUETTES ==================== -->

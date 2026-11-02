@@ -1,3 +1,3 @@
 <div align="center">
-  <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" width="100%" />
+  <img src="./banner.svg" width="100%" />
 </div>

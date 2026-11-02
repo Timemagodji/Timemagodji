@@ -125,32 +125,49 @@
     .sp-a { animation: starPulseA 3s infinite ease-in-out; }
     .sp-b { animation: starPulseB 4s infinite ease-in-out; }
 
-    /* 4. Falling meteors (ปรับให้ตกเร็วขึ้น) */
-    @keyframes meteorFall {
+    /* 4. Fast Meteor Shower (ฝนดาวตกพุ่งเร็ว ตกพร้อมกันหลายดวง) */
+    @keyframes meteorShower {
       0% {
         transform: translate(0, 0);
         opacity: 0;
       }
-      6% { opacity: 1; }
-      17% {
-        transform: translate(320px, 200px);
+      3% { opacity: 1; }
+      14% {
+        transform: translate(380px, 235px);
+        opacity: 0.9;
+      }
+      16% {
+        transform: translate(410px, 255px);
         opacity: 0;
       }
       100% {
-        transform: translate(320px, 200px);
+        transform: translate(410px, 255px);
         opacity: 0;
       }
     }
 
     .meteor {
       opacity: 0;
-      animation: meteorFall 14s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+      animation: meteorShower 6.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite;
     }
-    .meteor-1 { animation-delay: 1.5s; }
-    .meteor-2 { animation-delay: 4.2s; }
-    .meteor-3 { animation-delay: 7s; }
-    .meteor-4 { animation-delay: 9.8s; }
-    .meteor-5 { animation-delay: 12.2s; }
+    /* Cluster 1 */
+    .m-1  { animation-delay: 0.2s; }
+    .m-2  { animation-delay: 0.5s; }
+    .m-3  { animation-delay: 0.7s; }
+    .m-4  { animation-delay: 1.1s; }
+    /* Cluster 2 */
+    .m-5  { animation-delay: 1.8s; }
+    .m-6  { animation-delay: 2.1s; }
+    .m-7  { animation-delay: 2.4s; }
+    .m-8  { animation-delay: 2.8s; }
+    /* Cluster 3 */
+    .m-9  { animation-delay: 3.5s; }
+    .m-10 { animation-delay: 3.8s; }
+    .m-11 { animation-delay: 4.1s; }
+    .m-12 { animation-delay: 4.5s; }
+    /* Cluster 4 */
+    .m-13 { animation-delay: 5.1s; }
+    .m-14 { animation-delay: 5.4s; }
   </style>
 
   <!-- Clip Path to avoid spillover -->
@@ -216,35 +233,69 @@
       <path class="aurora-wave2" d="M -80,85 Q 220,40 500,80 T 920,45 T 1100,75 L 1100,175 L -80,175 Z" fill="url(#auroraGlow2)"/>
     </g>
 
-    <!-- ==================== 3. CLEAN FALLING METEORS ==================== -->
-    <!-- Meteor 1: White -->
-    <g transform="translate(80, -40)" class="meteor meteor-1">
-      <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- ==================== 3. FAST METEOR SHOWER (14 METEORS) ==================== -->
+    <!-- Cluster 1: ชุดที่ 1 ตกลงมาพร้อมกัน 4 ดวง -->
+    <g transform="translate(60, -40)" class="meteor m-1">
+      <line x1="-55" y1="-34" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
+    <g transform="translate(280, -40)" class="meteor m-2">
+      <line x1="-65" y1="-40" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#bae6fd" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(540, -40)" class="meteor m-3">
+      <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigo)" stroke-width="2.0" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.0" fill="#c7d2fe" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(760, -40)" class="meteor m-4">
+      <line x1="-60" y1="-37" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.1" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#ffffff" filter="url(#starGlow)"/>
+    </g>
 
-    <!-- Meteor 2: Electric Cyan-Blue -->
-    <g transform="translate(320, -40)" class="meteor-2 meteor">
-      <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Cluster 2: ชุดที่ 2 พุ่งตามมาติดๆ 4 ดวง -->
+    <g transform="translate(140, -40)" class="meteor m-5">
+      <line x1="-60" y1="-37" x2="0" y2="0" stroke="url(#mGradIndigo)" stroke-width="2.3" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(380, -40)" class="meteor m-6">
+      <line x1="-70" y1="-43" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.3" fill="#93c5fd" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(640, -40)" class="meteor m-7">
+      <line x1="-55" y1="-34" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.0" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(850, -40)" class="meteor m-8">
+      <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="1.9" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="1.9" fill="#bae6fd" filter="url(#starGlow)"/>
+    </g>
+
+    <!-- Cluster 3: ชุดที่ 3 กระจายทั่วท้องฟ้า 4 ดวง -->
+    <g transform="translate(-10, -40)" class="meteor m-9">
+      <line x1="-55" y1="-34" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="2.1" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#93c5fd" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(220, -40)" class="meteor m-10">
+      <line x1="-65" y1="-40" x2="0" y2="0" stroke="url(#mGradIndigo)" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(470, -40)" class="meteor m-11">
+      <line x1="-60" y1="-37" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#ffffff" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(710, -40)" class="meteor m-12">
+      <line x1="-55" y1="-34" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#bae6fd" filter="url(#starGlow)"/>
     </g>
 
-    <!-- Meteor 3: Violet-Indigo Glow -->
-    <g transform="translate(560, -40)" class="meteor-3 meteor">
-      <line x1="-55" y1="-34" x2="0" y2="0" stroke="url(#mGradIndigo)" stroke-width="2.4" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
-    </g>
-
-    <!-- Meteor 4: White -->
-    <g transform="translate(740, -40)" class="meteor-4 meteor">
+    <!-- Cluster 4: ชุดที่ 4 ส่งท้ายรอบ 2 ดวง -->
+    <g transform="translate(330, -40)" class="meteor m-13">
       <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.0" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
-
-    <!-- Meteor 5: Neon Sky Blue -->
-    <g transform="translate(200, -40)" class="meteor-5 meteor">
-      <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigo)" stroke-width="2.1" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.0" fill="#93c5fd" filter="url(#starGlow)"/>
+    <g transform="translate(590, -40)" class="meteor m-14">
+      <line x1="-65" y1="-40" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="2.3" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
     </g>
 
     <!-- ==================== 4. PINE FOREST SILHOUETTES ==================== -->

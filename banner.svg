@@ -1,29 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="100%" height="100%">
   <defs>
-    <!-- Night Sky Base -->
+    <!-- Night Sky Base (Electric Indigo Tone) -->
     <linearGradient id="nightSky" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#010309"/>
-      <stop offset="40%" stop-color="#020817"/>
-      <stop offset="75%" stop-color="#041424"/>
-      <stop offset="100%" stop-color="#08232e"/>
+      <stop offset="0%" stop-color="#02030a"/>
+      <stop offset="40%" stop-color="#05081c"/>
+      <stop offset="75%" stop-color="#0b1238"/>
+      <stop offset="100%" stop-color="#121b52"/>
     </linearGradient>
 
-    <!-- Aurora Wave Gradients -->
+    <!-- Aurora Wave Gradients (Cobalt, Royal Blue & Indigo) -->
     <linearGradient id="auroraGlow1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#059669" stop-opacity="0"/>
-      <stop offset="15%" stop-color="#10b981" stop-opacity="0.3"/>
-      <stop offset="40%" stop-color="#34d399" stop-opacity="0.75"/>
-      <stop offset="65%" stop-color="#22d3ee" stop-opacity="0.6"/>
-      <stop offset="90%" stop-color="#059669" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#059669" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0"/>
+      <stop offset="15%" stop-color="#3b82f6" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#2563eb" stop-opacity="0.8"/>
+      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.65"/>
+      <stop offset="90%" stop-color="#4f46e5" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0"/>
     </linearGradient>
 
     <linearGradient id="auroraGlow2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0"/>
-      <stop offset="25%" stop-color="#38bdf8" stop-opacity="0.35"/>
-      <stop offset="55%" stop-color="#6ee7b7" stop-opacity="0.8"/>
-      <stop offset="80%" stop-color="#10b981" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#172554" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#60a5fa" stop-opacity="0.4"/>
+      <stop offset="55%" stop-color="#3b82f6" stop-opacity="0.85"/>
+      <stop offset="80%" stop-color="#1d44e3" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#172554" stop-opacity="0"/>
     </linearGradient>
 
     <!-- Aurora Vertical Fade Mask -->
@@ -51,10 +51,10 @@
       <stop offset="100%" stop-color="#bae6fd" stop-opacity="1"/>
     </linearGradient>
 
-    <linearGradient id="mGradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#10b981" stop-opacity="0"/>
-      <stop offset="60%" stop-color="#34d399" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#a7f3d0" stop-opacity="1"/>
+    <linearGradient id="mGradIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#818cf8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#c7d2fe" stop-opacity="1"/>
     </linearGradient>
 
     <!-- Blur filter for soft glowing aurora -->
@@ -72,7 +72,7 @@
   </defs>
 
   <style>
-    /* 1. ท้องฟ้าและดวงดาวค่อยๆ ลอยไปทางขวาเรื่อยๆ */
+    /* 1. Sky drift right */
     @keyframes driftRight {
       0% { transform: translateX(-120px); }
       100% { transform: translateX(60px); }
@@ -81,7 +81,7 @@
       animation: driftRight 45s linear infinite alternate;
     }
 
-    /* 2. แสงเหนือพลิ้วไหวและเปลี่ยนเฉด */
+    /* 2. Aurora wave ripples */
     @keyframes auroraRipple1 {
       0%, 100% {
         transform: translateX(-40px) skewX(-2deg) scaleY(1);
@@ -119,42 +119,41 @@
       transform-origin: 450px 100px;
     }
 
-    /* ดวงดาวกะพริบ */
+    /* 3. Star pulse animation */
     @keyframes starPulseA { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
     @keyframes starPulseB { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.2; } }
     .sp-a { animation: starPulseA 3s infinite ease-in-out; }
     .sp-b { animation: starPulseB 4s infinite ease-in-out; }
 
-    /* 3. ดาวตกพุ่งตกลงมาแบบเนียนๆ ไม่มีเส้นค้าง */
-    .meteor {
-      opacity: 0;
-    }
-
-    @keyframes shoot {
+    /* 4. Falling meteors */
+    @keyframes meteorFall {
       0% {
         transform: translate(0, 0);
         opacity: 0;
       }
-      2% {
-        opacity: 1;
-      }
-      12% {
-        transform: translate(240px, 150px);
+      10% { opacity: 1; }
+      25% {
+        transform: translate(320px, 200px);
         opacity: 0;
       }
       100% {
-        transform: translate(240px, 150px);
+        transform: translate(320px, 200px);
         opacity: 0;
       }
     }
 
-    .meteor-1 { animation: shoot 4.5s infinite cubic-bezier(0.25, 0.1, 0.25, 1) -0.5s; }
-    .meteor-2 { animation: shoot 5.2s infinite cubic-bezier(0.25, 0.1, 0.25, 1) -2.1s; }
-    .meteor-3 { animation: shoot 4.8s infinite cubic-bezier(0.25, 0.1, 0.25, 1) -3.7s; }
-    .meteor-4 { animation: shoot 5.6s infinite cubic-bezier(0.25, 0.1, 0.25, 1) -1.2s; }
-    .meteor-5 { animation: shoot 4.2s infinite cubic-bezier(0.25, 0.1, 0.25, 1) -2.9s; }
+    .meteor {
+      opacity: 0;
+      animation: meteorFall 14s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+    }
+    .meteor-1 { animation-delay: 2s; }
+    .meteor-2 { animation-delay: 5s; }
+    .meteor-3 { animation-delay: 8s; }
+    .meteor-4 { animation-delay: 11s; }
+    .meteor-5 { animation-delay: 13.5s; }
   </style>
 
+  <!-- Clip Path to avoid spillover -->
   <clipPath id="cardClip">
     <rect width="900" height="240" rx="16" ry="16"/>
   </clipPath>
@@ -163,32 +162,33 @@
     <!-- Base Sky -->
     <rect width="900" height="240" fill="url(#nightSky)"/>
 
-    <!-- ==================== 1. MOVING SKY (DRIFTING TO THE RIGHT) ==================== -->
+    <!-- ==================== 1. STARS BACKGROUND ==================== -->
     <g class="sky-drift-right">
-      <!-- Stars Layer 1 (White) -->
+      <!-- Dim/Medium Background Stars -->
       <g fill="#ffffff" class="sp-a">
-        <circle cx="20" cy="30" r="1"/><circle cx="70" cy="80" r="1.3"/><circle cx="130" cy="25" r="0.9"/>
-        <circle cx="190" cy="65" r="1.2"/><circle cx="250" cy="35" r="1.4"/><circle cx="310" cy="85" r="1"/>
-        <circle cx="380" cy="30" r="1.2"/><circle cx="440" cy="75" r="1.5"/><circle cx="510" cy="40" r="1"/>
-        <circle cx="580" cy="80" r="1.3"/><circle cx="650" cy="25" r="1.1"/><circle cx="720" cy="70" r="1.4"/>
-        <circle cx="790" cy="35" r="1"/><circle cx="850" cy="85" r="1.3"/><circle cx="920" cy="30" r="1.2"/>
-        <circle cx="980" cy="75" r="1.4"/><circle cx="1040" cy="35" r="1"/>
+        <circle cx="20" cy="40" r="1.1"/><circle cx="80" cy="85" r="0.9"/><circle cx="130" cy="25" r="1.2"/>
+        <circle cx="190" cy="70" r="0.8"/><circle cx="240" cy="115" r="1.0"/><circle cx="300" cy="30" r="1.1"/>
+        <circle cx="350" cy="80" r="0.8"/><circle cx="410" cy="45" r="1.2"/><circle cx="470" cy="95" r="0.9"/>
+        <circle cx="530" cy="20" r="1.0"/><circle cx="590" cy="75" r="1.1"/><circle cx="640" cy="110" r="0.8"/>
+        <circle cx="700" cy="40" r="1.2"/><circle cx="750" cy="85" r="0.9"/><circle cx="810" cy="25" r="1.0"/>
+        <circle cx="860" cy="70" r="1.1"/><circle cx="920" cy="35" r="0.8"/><circle cx="970" cy="90" r="1.2"/>
+        <circle cx="1020" cy="50" r="0.9"/><circle cx="1080" cy="80" r="1.0"/>
       </g>
 
-      <!-- Stars Layer 2 (Cyan/Mint) -->
-      <g fill="#a7f3d0" class="sp-b">
-        <circle cx="45" cy="60" r="1.2"/><circle cx="105" cy="40" r="1"/><circle cx="165" cy="85" r="1.4"/>
-        <circle cx="225" cy="20" r="1.1"/><circle cx="285" cy="65" r="1.3"/><circle cx="350" cy="45" r="1"/>
-        <circle cx="410" cy="95" r="1.4"/><circle cx="475" cy="25" r="1"/><circle cx="545" cy="65" r="1.3"/>
-        <circle cx="615" cy="45" r="1.1"/><circle cx="685" cy="85" r="1.4"/><circle cx="755" cy="20" r="1"/>
-        <circle cx="820" cy="65" r="1.3"/><circle cx="890" cy="40" r="1.1"/><circle cx="955" cy="90" r="1.3"/>
-        <circle cx="1015" cy="55" r="1.2"/>
+      <g fill="#c7d2fe" class="sp-b">
+        <circle cx="45" cy="100" r="1.0"/><circle cx="110" cy="50" r="1.3"/><circle cx="165" cy="110" r="0.9"/>
+        <circle cx="220" cy="35" r="1.1"/><circle cx="280" cy="90" r="1.2"/><circle cx="340" cy="50" r="0.8"/>
+        <circle cx="395" cy="105" r="1.1"/><circle cx="445" cy="30" r="1.3"/><circle cx="505" cy="65" r="0.9"/>
+        <circle cx="560" cy="115" r="1.1"/><circle cx="620" cy="40" r="1.2"/><circle cx="675" cy="95" r="0.8"/>
+        <circle cx="730" cy="60" r="1.3"/><circle cx="785" cy="105" r="0.9"/><circle cx="845" cy="40" r="1.1"/>
+        <circle cx="900" cy="85" r="1.2"/><circle cx="955" cy="60" r="0.8"/><circle cx="1010" cy="110" r="1.1"/>
+        <circle cx="1065" cy="35" r="1.0"/>
       </g>
 
-      <!-- Stars Layer 3 (Star Dust) -->
+      <!-- Tiny Distant Stars -->
       <g fill="#bae6fd" opacity="0.6">
-        <circle cx="10" cy="50" r="0.6"/><circle cx="55" cy="110" r="0.7"/><circle cx="95" cy="65" r="0.6"/>
-        <circle cx="145" cy="100" r="0.8"/><circle cx="180" cy="45" r="0.6"/><circle cx="235" cy="110" r="0.7"/>
+        <circle cx="35" cy="65" r="0.7"/><circle cx="65" cy="20" r="0.8"/><circle cx="95" cy="115" r="0.6"/>
+        <circle cx="145" cy="60" r="0.7"/><circle cx="175" cy="95" r="0.6"/><circle cx="210" cy="110" r="0.7"/>
         <circle cx="270" cy="55" r="0.6"/><circle cx="330" cy="95" r="0.8"/><circle cx="365" cy="30" r="0.7"/>
         <circle cx="425" cy="110" r="0.6"/><circle cx="460" cy="55" r="0.7"/><circle cx="525" cy="105" r="0.8"/>
         <circle cx="565" cy="35" r="0.6"/><circle cx="630" cy="115" r="0.7"/><circle cx="665" cy="50" r="0.6"/>
@@ -216,46 +216,44 @@
       <path class="aurora-wave2" d="M -80,85 Q 220,40 500,80 T 920,45 T 1100,75 L 1100,175 L -80,175 Z" fill="url(#auroraGlow2)"/>
     </g>
 
-    <!-- ==================== 3. CLEAN FALLING METEORS (NO STATIC LINES) ==================== -->
-    <!-- ทุกดวงเริ่มต้นจากนอกขอบจอด้านบน (y = -40) และตกลงมาทีละดวงอย่างเป็นธรรมชาติ -->
-
-    <!-- Meteor 1: สีขาว -->
+    <!-- ==================== 3. CLEAN FALLING METEORS ==================== -->
+    <!-- Meteor 1: White -->
     <g transform="translate(80, -40)" class="meteor meteor-1">
       <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
 
-    <!-- Meteor 2: สีฟ้า -->
+    <!-- Meteor 2: Electric Cyan-Blue -->
     <g transform="translate(320, -40)" class="meteor-2 meteor">
       <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradBlue)" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#bae6fd" filter="url(#starGlow)"/>
     </g>
 
-    <!-- Meteor 3: สีเขียวมรกต -->
+    <!-- Meteor 3: Violet-Indigo Glow -->
     <g transform="translate(560, -40)" class="meteor-3 meteor">
-      <line x1="-55" y1="-34" x2="0" y2="0" stroke="url(#mGradGreen)" stroke-width="2.4" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#a7f3d0" filter="url(#starGlow)"/>
+      <line x1="-55" y1="-34" x2="0" y2="0" stroke="url(#mGradIndigo)" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
     </g>
 
-    <!-- Meteor 4: สีขาว -->
+    <!-- Meteor 4: White -->
     <g transform="translate(740, -40)" class="meteor-4 meteor">
       <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradWhite)" stroke-width="2.0" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
 
-    <!-- Meteor 5: สีเขียวมิ้นต์ -->
+    <!-- Meteor 5: Neon Sky Blue -->
     <g transform="translate(200, -40)" class="meteor-5 meteor">
-      <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradGreen)" stroke-width="2.1" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.0" fill="#6ee7b7" filter="url(#starGlow)"/>
+      <line x1="-50" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigo)" stroke-width="2.1" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.0" fill="#93c5fd" filter="url(#starGlow)"/>
     </g>
 
-    <!-- ==================== PINE FOREST SILHOUETTES ==================== -->
+    <!-- ==================== 4. PINE FOREST SILHOUETTES ==================== -->
     <path d="M 0,205 
       L 15,190 L 30,205 L 45,185 L 60,208 L 75,192 L 95,210 L 115,180 L 135,212 L 155,195 L 180,215 
       L 205,182 L 230,210 L 255,190 L 280,212 L 310,185 L 335,210 L 360,195 L 390,215 L 420,180 
       L 450,210 L 480,188 L 515,212 L 545,182 L 575,210 L 605,190 L 635,215 L 670,185 L 700,210 
       L 730,192 L 760,215 L 795,180 L 825,210 L 855,188 L 880,212 L 900,195 L 900,240 L 0,240 Z" 
-      fill="#03131c" opacity="0.85"/>
+      fill="#090d24" opacity="0.85"/>
 
     <path d="M -10,240 
       L 5,175 L 20,205 L 35,165 L 50,205 L 70,160 L 90,208 L 110,170 L 130,210 
@@ -263,14 +261,14 @@
       L 355,150 L 380,215 L 410,165 L 440,210 L 470,155 L 500,212 L 530,168 L 560,210 
       L 590,145 L 620,212 L 650,160 L 680,208 L 710,150 L 740,212 L 770,165 L 800,210 
       L 830,155 L 860,208 L 885,160 L 910,240 Z" 
-      fill="#010406"/>
+      fill="#02030a"/>
 
-    <polygon points="50,145 42,165 47,165 38,185 45,185 32,210 68,210 55,185 62,185 53,165 58,165" fill="#010406"/>
-    <polygon points="120,135 110,160 116,160 105,185 112,185 98,215 142,215 128,185 135,185 124,160 130,160" fill="#010406"/>
-    <polygon points="360,132 350,155 356,155 345,180 352,180 338,210 382,210 370,180 376,180 366,155 372,155" fill="#010406"/>
-    <polygon points="695,130 685,155 692,155 680,180 688,180 675,212 715,212 702,180 710,180 698,155 705,155" fill="#010406"/>
+    <polygon points="50,145 42,165 47,165 38,185 45,185 32,210 68,210 55,185 62,185 53,165 58,165" fill="#02030a"/>
+    <polygon points="120,135 110,160 116,160 105,185 112,185 98,215 142,215 128,185 135,185 124,160 130,160" fill="#02030a"/>
+    <polygon points="360,132 350,155 356,155 345,180 352,180 338,210 382,210 370,180 376,180 366,155 372,155" fill="#02030a"/>
+    <polygon points="695,130 685,155 692,155 680,180 688,180 675,212 715,212 702,180 710,180 698,155 705,155" fill="#02030a"/>
 
     <!-- Outer Border Glow -->
-    <rect width="900" height="240" rx="16" ry="16" fill="none" stroke="#34d399" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect width="900" height="240" rx="16" ry="16" fill="none" stroke="#3b82f6" stroke-opacity="0.3" stroke-width="1.5"/>
   </g>
 </svg>

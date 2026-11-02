@@ -265,6 +265,67 @@
       letter-spacing: 0.8px;
       filter: url(#highlightGlow);
     }
+
+    /* ==================== 8. GENTLE WIND BREEZE ON FOREST and PINES ==================== */
+    @keyframes forestSwayBack {
+      0%, 100% { transform: skewX(-0.5deg); }
+      50%      { transform: skewX(0.7deg); }
+    }
+
+    @keyframes forestSwayFront {
+      0%, 100% { transform: skewX(-0.8deg); }
+      50%      { transform: skewX(1.0deg); }
+    }
+
+    @keyframes pineSway1 {
+      0%, 100% { transform: rotate(-1.4deg); }
+      50%      { transform: rotate(1.8deg); }
+    }
+
+    @keyframes pineSway2 {
+      0%, 100% { transform: rotate(1.6deg); }
+      50%      { transform: rotate(-1.3deg); }
+    }
+
+    @keyframes pineSway3 {
+      0%, 100% { transform: rotate(-1.7deg); }
+      50%      { transform: rotate(2.0deg); }
+    }
+
+    @keyframes pineSway4 {
+      0%, 100% { transform: rotate(1.5deg); }
+      50%      { transform: rotate(-1.4deg); }
+    }
+
+    .forest-back {
+      animation: forestSwayBack 6.5s ease-in-out infinite;
+      transform-origin: 450px 240px;
+    }
+
+    .forest-front {
+      animation: forestSwayFront 5.2s ease-in-out infinite;
+      transform-origin: 450px 240px;
+    }
+
+    .pine-1 {
+      animation: pineSway1 4.2s ease-in-out infinite;
+      transform-origin: 50px 210px;
+    }
+
+    .pine-2 {
+      animation: pineSway2 4.8s ease-in-out infinite 0.6s;
+      transform-origin: 120px 215px;
+    }
+
+    .pine-3 {
+      animation: pineSway3 4.5s ease-in-out infinite 1.3s;
+      transform-origin: 360px 210px;
+    }
+
+    .pine-4 {
+      animation: pineSway4 5.0s ease-in-out infinite 1.9s;
+      transform-origin: 695px 212px;
+    }
   </style>
 
   <!-- Card Border Clip -->
@@ -529,17 +590,17 @@
       <path class="mist-layer2" d="M -80,178 Q 220,160 500,178 T 950,168 T 1100,178 L 1100,215 L -80,215 Z" fill="url(#mistGrad2)"/>
     </g>
 
-    <!-- ==================== 7. PINE FOREST SILHOUETTES ==================== -->
-    <!-- Distant Forest Layer -->
-    <path d="M 0,205 
+    <!-- ==================== 7. PINE FOREST SILHOUETTES WITH WIND SWAY ==================== -->
+    <!-- Distant Forest Layer (Gentle Wind Sway) -->
+    <path class="forest-back" d="M 0,205 
       L 15,190 L 30,205 L 45,185 L 60,208 L 75,192 L 95,210 L 115,180 L 135,212 L 155,195 L 180,215 
       L 205,182 L 230,210 L 255,190 L 280,212 L 310,185 L 335,210 L 360,195 L 390,215 L 420,180 
       L 450,210 L 480,188 L 515,212 L 545,182 L 575,210 L 605,190 L 635,215 L 670,185 L 700,210 
       L 730,192 L 760,215 L 795,180 L 825,210 L 855,188 L 880,212 L 900,195 L 900,240 L 0,240 Z" 
       fill="#090d24" opacity="0.9"/>
 
-    <!-- Foreground Forest Layer -->
-    <path d="M -10,240 
+    <!-- Foreground Forest Layer (Gentle Wind Sway) -->
+    <path class="forest-front" d="M -10,240 
       L 5,175 L 20,205 L 35,165 L 50,205 L 70,160 L 90,208 L 110,170 L 130,210 
       L 150,155 L 175,215 L 200,175 L 225,210 L 250,160 L 275,208 L 305,170 L 330,212 
       L 355,150 L 380,215 L 410,165 L 440,210 L 470,155 L 500,212 L 530,168 L 560,210 
@@ -547,11 +608,11 @@
       L 830,155 L 860,208 L 885,160 L 910,240 Z" 
       fill="#02030a"/>
 
-    <!-- Prominent Tall Evergreen Pines -->
-    <polygon points="50,145 42,165 47,165 38,185 45,185 32,210 68,210 55,185 62,185 53,165 58,165" fill="#02030a"/>
-    <polygon points="120,135 110,160 116,160 105,185 112,185 98,215 142,215 128,185 135,185 124,160 130,160" fill="#02030a"/>
-    <polygon points="360,132 350,155 356,155 345,180 352,180 338,210 382,210 370,180 376,180 366,155 372,155" fill="#02030a"/>
-    <polygon points="695,130 685,155 692,155 680,180 688,180 675,212 715,212 702,180 710,180 698,155 705,155" fill="#02030a"/>
+    <!-- Prominent Tall Evergreen Pines (Natural Wind Swaying) -->
+    <polygon class="pine-1" points="50,145 42,165 47,165 38,185 45,185 32,210 68,210 55,185 62,185 53,165 58,165" fill="#02030a"/>
+    <polygon class="pine-2" points="120,135 110,160 116,160 105,185 112,185 98,215 142,215 128,185 135,185 124,160 130,160" fill="#02030a"/>
+    <polygon class="pine-3" points="360,132 350,155 356,155 345,180 352,180 338,210 382,210 370,180 376,180 366,155 372,155" fill="#02030a"/>
+    <polygon class="pine-4" points="695,130 685,155 692,155 680,180 688,180 675,212 715,212 702,180 710,180 698,155 705,155" fill="#02030a"/>
 
     <!-- ==================== 8. GLOWING FIREFLY PARTICLES ==================== -->
     <g fill="#93c5fd" filter="url(#starGlow)">

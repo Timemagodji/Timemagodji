@@ -38,14 +38,12 @@
     </mask>
 
     <!-- Mountain Gradients -->
-    <!-- Distant High Ridge -->
     <linearGradient id="mountGradFar" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#1e2965"/>
       <stop offset="45%" stop-color="#131b46"/>
       <stop offset="100%" stop-color="#080d28"/>
     </linearGradient>
 
-    <!-- Mid Mountain Ridge -->
     <linearGradient id="mountGradMid" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#0f1638"/>
       <stop offset="60%" stop-color="#090e24"/>
@@ -104,10 +102,26 @@
     <filter id="mistBlur" x="-10%" y="-20%" width="120%" height="140%">
       <feGaussianBlur stdDeviation="6"/>
     </filter>
+
+    <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="highlightGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
   <style>
-    /* 1. Continuous Rightward Sky Flow (Seamless 18s) */
+    /* 1. Continuous Rightward Sky Flow */
     @keyframes flowSkyRight {
       0% { transform: translateX(0px); }
       100% { transform: translateX(900px); }
@@ -176,7 +190,7 @@
       transform-origin: 450px 185px;
     }
 
-    /* 6. Glowing Forest Particles / Fireflies */
+    /* 6. Firefly Particles */
     @keyframes fireflyPulse {
       0%, 100% { opacity: 0.1; transform: translateY(0px); }
       50% { opacity: 0.85; transform: translateY(-7px); }
@@ -184,6 +198,73 @@
     .ff-1 { animation: fireflyPulse 3.2s ease-in-out infinite; }
     .ff-2 { animation: fireflyPulse 4.1s ease-in-out infinite 1.2s; }
     .ff-3 { animation: fireflyPulse 3.6s ease-in-out infinite 2.0s; }
+
+    /* ==================== 7. SEQUENTIAL LYRICS REVEAL ANIMATIONS ==================== */
+    @keyframes lyricLine1 {
+      0%       { opacity: 0; transform: translateY(-4px); }
+      4%, 86%  { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(0); }
+    }
+
+    @keyframes lyricLine2 {
+      0%, 10%  { opacity: 0; transform: translateY(-4px); }
+      14%, 86% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(0); }
+    }
+
+    @keyframes lyricLine3 {
+      0%, 20%  { opacity: 0; transform: translateY(-4px); }
+      24%, 86% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(0); }
+    }
+
+    @keyframes lyricLine4 {
+      0%, 30%  { opacity: 0; transform: translateY(-4px); }
+      34%, 86% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(0); }
+    }
+
+    @keyframes lyricLine5 {
+      0%, 40%  { opacity: 0; transform: translateY(-4px); }
+      44%, 86% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(0); }
+    }
+
+    @keyframes lyricLine6 {
+      0%, 50%  { opacity: 0; transform: translateY(-4px); }
+      54%, 86% { opacity: 1; transform: translateY(0); }
+      94%, 100% { opacity: 0; transform: translateY(0); }
+    }
+
+    @keyframes lyricLine7 {
+      0%, 60%  { opacity: 0; transform: translateY(-5px) scale(0.96); }
+      65%, 86% { opacity: 1; transform: translateY(0) scale(1); }
+      94%, 100% { opacity: 0; transform: translateY(0); }
+    }
+
+    .lyric-base {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.6px;
+      fill: #e0f2fe;
+      text-anchor: end;
+      filter: url(#textGlow);
+    }
+
+    .ll-1 { animation: lyricLine1 18s ease-in-out infinite; }
+    .ll-2 { animation: lyricLine2 18s ease-in-out infinite; fill: #93c5fd; }
+    .ll-3 { animation: lyricLine3 18s ease-in-out infinite; }
+    .ll-4 { animation: lyricLine4 18s ease-in-out infinite; fill: #93c5fd; }
+    .ll-5 { animation: lyricLine5 18s ease-in-out infinite; }
+    .ll-6 { animation: lyricLine6 18s ease-in-out infinite; fill: #93c5fd; }
+    .ll-7 { 
+      animation: lyricLine7 18s ease-in-out infinite; 
+      fill: #ffffff; 
+      font-weight: 600;
+      font-size: 10.5px;
+      letter-spacing: 0.8px;
+      filter: url(#highlightGlow);
+    }
   </style>
 
   <!-- Card Border Clip -->
@@ -216,13 +297,13 @@
           <circle cx="399.9" cy="88.1" r="0.95" class="sp-a"/>
           <circle cx="433.8" cy="107.0" r="1.02" class="sp-b"/>
           <circle cx="456.8" cy="124.6" r="0.99" class="sp-a"/>
-          <circle cx="503.9" cy="80.9" r="0.76" class="sp-b"/>
-          <circle cx="523.5" cy="65.3" r="0.96" class="sp-a"/>
-          <circle cx="561.4" cy="77.9" r="0.82" class="sp-b"/>
-          <circle cx="600.3" cy="56.8" r="0.92" class="sp-a"/>
-          <circle cx="637.2" cy="99.9" r="0.86" class="sp-b"/>
-          <circle cx="658.2" cy="111.4" r="0.75" class="sp-a"/>
-          <circle cx="682.0" cy="30.2" r="0.73" class="sp-b"/>
+          <circle cx="503.9" cy="135.0" r="0.76" class="sp-b"/>
+          <circle cx="523.5" cy="138.0" r="0.96" class="sp-a"/>
+          <circle cx="561.4" cy="136.0" r="0.82" class="sp-b"/>
+          <circle cx="600.3" cy="139.0" r="0.92" class="sp-a"/>
+          <circle cx="637.2" cy="135.0" r="0.86" class="sp-b"/>
+          <circle cx="658.2" cy="138.0" r="0.75" class="sp-a"/>
+          <circle cx="682.0" cy="136.0" r="0.73" class="sp-b"/>
           <circle cx="728.3" cy="42.8" r="0.83" class="sp-a"/>
           <circle cx="754.7" cy="119.5" r="0.84" class="sp-b"/>
           <circle cx="798.1" cy="95.7" r="1.04" class="sp-a"/>
@@ -245,12 +326,7 @@
           <circle cx="388.9" cy="34.8" r="1.36" class="sp-d"/>
           <circle cx="417.8" cy="85.3" r="1.04" class="sp-c"/>
           <circle cx="469.7" cy="66.5" r="1.29" class="sp-d"/>
-          <circle cx="514.8" cy="24.4" r="1.21" class="sp-c"/>
-          <circle cx="552.4" cy="55.8" r="1.12" class="sp-d"/>
-          <circle cx="589.6" cy="101.4" r="1.19" class="sp-c"/>
-          <circle cx="629.4" cy="78.1" r="1.08" class="sp-d"/>
-          <circle cx="678.9" cy="54.2" r="1.34" class="sp-c"/>
-          <circle cx="704.8" cy="118.7" r="1.32" class="sp-d"/>
+          <circle cx="454.8" cy="24.4" r="1.21" class="sp-c"/>
           <circle cx="760.1" cy="41.7" r="1.18" class="sp-c"/>
           <circle cx="813.0" cy="88.9" r="1.14" class="sp-d"/>
           <circle cx="848.4" cy="32.5" r="1.22" class="sp-c"/>
@@ -277,17 +353,6 @@
           <circle cx="396.4" cy="28.1" r="0.51"/>
           <circle cx="422.8" cy="64.7" r="0.69"/>
           <circle cx="448.2" cy="115.3" r="0.55"/>
-          <circle cx="474.9" cy="35.6" r="0.61"/>
-          <circle cx="500.8" cy="88.2" r="0.47"/>
-          <circle cx="526.4" cy="122.9" r="0.74"/>
-          <circle cx="553.1" cy="48.3" r="0.53"/>
-          <circle cx="579.5" cy="92.1" r="0.66"/>
-          <circle cx="605.2" cy="24.8" r="0.58"/>
-          <circle cx="631.7" cy="76.4" r="0.71"/>
-          <circle cx="657.9" cy="118.6" r="0.49"/>
-          <circle cx="684.3" cy="39.2" r="0.64"/>
-          <circle cx="710.6" cy="84.7" r="0.52"/>
-          <circle cx="736.8" cy="127.3" r="0.68"/>
           <circle cx="762.4" cy="52.1" r="0.60"/>
           <circle cx="788.9" cy="96.8" r="0.72"/>
           <circle cx="815.2" cy="31.4" r="0.46"/>
@@ -302,9 +367,7 @@
           <circle cx="165.8" cy="38.2" r="2.15" class="sp-c"/>
           <circle cx="312.4" cy="52.9" r="2.42" class="sp-a"/>
           <circle cx="425.1" cy="34.7" r="2.20" class="sp-c"/>
-          <circle cx="538.6" cy="62.4" r="2.48" class="sp-a"/>
-          <circle cx="642.3" cy="41.8" r="2.10" class="sp-c"/>
-          <circle cx="695.0" cy="55.3" r="2.38" class="sp-a"/>
+          <circle cx="458.6" cy="62.4" r="2.48" class="sp-a"/>
           <circle cx="854.2" cy="36.5" r="2.25" class="sp-c"/>
         </g>
       </g>
@@ -328,13 +391,13 @@
           <circle cx="399.9" cy="88.1" r="0.95" class="sp-a"/>
           <circle cx="433.8" cy="107.0" r="1.02" class="sp-b"/>
           <circle cx="456.8" cy="124.6" r="0.99" class="sp-a"/>
-          <circle cx="503.9" cy="80.9" r="0.76" class="sp-b"/>
-          <circle cx="523.5" cy="65.3" r="0.96" class="sp-a"/>
-          <circle cx="561.4" cy="77.9" r="0.82" class="sp-b"/>
-          <circle cx="600.3" cy="56.8" r="0.92" class="sp-a"/>
-          <circle cx="637.2" cy="99.9" r="0.86" class="sp-b"/>
-          <circle cx="658.2" cy="111.4" r="0.75" class="sp-a"/>
-          <circle cx="682.0" cy="30.2" r="0.73" class="sp-b"/>
+          <circle cx="503.9" cy="135.0" r="0.76" class="sp-b"/>
+          <circle cx="523.5" cy="138.0" r="0.96" class="sp-a"/>
+          <circle cx="561.4" cy="136.0" r="0.82" class="sp-b"/>
+          <circle cx="600.3" cy="139.0" r="0.92" class="sp-a"/>
+          <circle cx="637.2" cy="135.0" r="0.86" class="sp-b"/>
+          <circle cx="658.2" cy="138.0" r="0.75" class="sp-a"/>
+          <circle cx="682.0" cy="136.0" r="0.73" class="sp-b"/>
           <circle cx="728.3" cy="42.8" r="0.83" class="sp-a"/>
           <circle cx="754.7" cy="119.5" r="0.84" class="sp-b"/>
           <circle cx="798.1" cy="95.7" r="1.04" class="sp-a"/>
@@ -357,12 +420,7 @@
           <circle cx="388.9" cy="34.8" r="1.36" class="sp-d"/>
           <circle cx="417.8" cy="85.3" r="1.04" class="sp-c"/>
           <circle cx="469.7" cy="66.5" r="1.29" class="sp-d"/>
-          <circle cx="514.8" cy="24.4" r="1.21" class="sp-c"/>
-          <circle cx="552.4" cy="55.8" r="1.12" class="sp-d"/>
-          <circle cx="589.6" cy="101.4" r="1.19" class="sp-c"/>
-          <circle cx="629.4" cy="78.1" r="1.08" class="sp-d"/>
-          <circle cx="678.9" cy="54.2" r="1.34" class="sp-c"/>
-          <circle cx="704.8" cy="118.7" r="1.32" class="sp-d"/>
+          <circle cx="454.8" cy="24.4" r="1.21" class="sp-c"/>
           <circle cx="760.1" cy="41.7" r="1.18" class="sp-c"/>
           <circle cx="813.0" cy="88.9" r="1.14" class="sp-d"/>
           <circle cx="848.4" cy="32.5" r="1.22" class="sp-c"/>
@@ -389,17 +447,6 @@
           <circle cx="396.4" cy="28.1" r="0.51"/>
           <circle cx="422.8" cy="64.7" r="0.69"/>
           <circle cx="448.2" cy="115.3" r="0.55"/>
-          <circle cx="474.9" cy="35.6" r="0.61"/>
-          <circle cx="500.8" cy="88.2" r="0.47"/>
-          <circle cx="526.4" cy="122.9" r="0.74"/>
-          <circle cx="553.1" cy="48.3" r="0.53"/>
-          <circle cx="579.5" cy="92.1" r="0.66"/>
-          <circle cx="605.2" cy="24.8" r="0.58"/>
-          <circle cx="631.7" cy="76.4" r="0.71"/>
-          <circle cx="657.9" cy="118.6" r="0.49"/>
-          <circle cx="684.3" cy="39.2" r="0.64"/>
-          <circle cx="710.6" cy="84.7" r="0.52"/>
-          <circle cx="736.8" cy="127.3" r="0.68"/>
           <circle cx="762.4" cy="52.1" r="0.60"/>
           <circle cx="788.9" cy="96.8" r="0.72"/>
           <circle cx="815.2" cy="31.4" r="0.46"/>
@@ -414,84 +461,76 @@
           <circle cx="165.8" cy="38.2" r="2.15" class="sp-c"/>
           <circle cx="312.4" cy="52.9" r="2.42" class="sp-a"/>
           <circle cx="425.1" cy="34.7" r="2.20" class="sp-c"/>
-          <circle cx="538.6" cy="62.4" r="2.48" class="sp-a"/>
-          <circle cx="642.3" cy="41.8" r="2.10" class="sp-c"/>
-          <circle cx="695.0" cy="55.3" r="2.38" class="sp-a"/>
+          <circle cx="458.6" cy="62.4" r="2.48" class="sp-a"/>
           <circle cx="854.2" cy="36.5" r="2.25" class="sp-c"/>
         </g>
       </g>
     </g>
 
     <!-- ==================== 2. GLOWING CRESCENT MOON ==================== -->
-    <!-- Majestic Celestial Anchor in the Upper-Right Sky -->
     <g>
-      <!-- Soft Outer Moon Aura / Halo Glow -->
       <circle cx="745" cy="56" r="48" fill="url(#moonAura)" class="moon-aura"/>
       <circle cx="745" cy="56" r="24" fill="#38bdf8" opacity="0.3" filter="url(#moonGlow)"/>
 
-      <!-- Crescent Moon Body -->
       <path d="M 748,34 
                A 22,22 0 1,1 732,74 
                A 25.5,25.5 0 0,0 748,34 Z" 
             fill="url(#moonFace)" 
             filter="url(#moonGlow)"/>
 
-      <!-- Delicate Crater / Lunar Shading Accent -->
       <path d="M 746,38 A 18,18 0 0,1 736,68 A 22,22 0 0,0 746,38 Z" fill="#bae6fd" opacity="0.4"/>
     </g>
 
     <!-- ==================== 3. WAVING NORTHERN LIGHTS (AURORA) ==================== -->
     <g mask="url(#auroraMask)" filter="url(#auroraBlur)">
-      <!-- Main Aurora Ribbon -->
       <path class="aurora-wave1" d="M -80,60 Q 150,15 380,55 T 820,40 T 1100,55 L 1100,165 L -80,165 Z" fill="url(#auroraGlow1)"/>
-      
-      <!-- Secondary Shimmering Curtain -->
       <path class="aurora-wave2" d="M -80,85 Q 220,40 500,80 T 920,45 T 1100,75 L 1100,175 L -80,175 Z" fill="url(#auroraGlow2)"/>
     </g>
 
-    <!-- ==================== 4. LAYERED SNOWY MOUNTAINS ==================== -->
-    <!-- Layer A: Distant High Alpine Mountain Peaks -->
+    <!-- ==================== 4. SEQUENTIAL SONG LYRICS BESIDE THE MOON ==================== -->
+    <!-- Positioned elegantly at x=702 (right aligned to the left of the crescent moon) -->
+    <g class="lyric-base">
+      <text x="702" y="32" class="ll-1">I can hear the bells ringin',</text>
+      <text x="702" y="47" class="ll-2">remindin' us why</text>
+      <text x="702" y="62" class="ll-3">We're still here singin',</text>
+      <text x="702" y="77" class="ll-4">it's Father Time</text>
+      <text x="702" y="92" class="ll-5">We're stuck in the Matrix,</text>
+      <text x="702" y="107" class="ll-6">living a lie</text>
+      <text x="702" y="124" class="ll-7">I'm not afraid to die</text>
+    </g>
+
+    <!-- ==================== 5. LAYERED SNOWY MOUNTAINS ==================== -->
+    <!-- Distant High Alpine Mountain Peaks (Softer saddle under lyrics at x=640) -->
     <g>
-      <!-- Mountain Silhouette Body -->
       <path d="M -20,210 
                L 40,158 L 95,172 L 155,142 L 205,158 L 265,118 L 325,160 
-               L 395,108 L 455,155 L 515,124 L 575,160 L 640,114 L 700,152 
+               L 395,108 L 455,155 L 515,124 L 575,160 L 640,140 L 695,158 
                L 760,116 L 820,155 L 875,130 L 920,150 L 920,225 L -20,225 Z" 
             fill="url(#mountGradFar)"/>
 
-      <!-- Lit Mountain Ridges (Subtle Snowy Highlight reflecting Aurora & Moonlight) -->
-      <!-- Peak 1: x=265 -->
       <polyline points="205,158 265,118 285,160" stroke="#60a5fa" stroke-width="1.2" stroke-opacity="0.35" fill="none"/>
-      <!-- Peak 2 (Highest Center-Left): x=395 -->
       <polyline points="325,160 395,108 420,156" stroke="#93c5fd" stroke-width="1.4" stroke-opacity="0.45" fill="none"/>
       <polygon points="395,108 385,126 395,132 406,124" fill="#38bdf8" opacity="0.2"/>
-      <!-- Peak 3: x=515 -->
       <polyline points="455,155 515,124 538,158" stroke="#60a5fa" stroke-width="1.2" stroke-opacity="0.35" fill="none"/>
-      <!-- Peak 4 (High Center-Right): x=640 -->
-      <polyline points="575,160 640,114 665,153" stroke="#93c5fd" stroke-width="1.4" stroke-opacity="0.5" fill="none"/>
-      <polygon points="640,114 630,132 642,138 652,128" fill="#38bdf8" opacity="0.22"/>
-      <!-- Peak 5 (Near Moon): x=760 -->
       <polyline points="700,152 760,116 788,156" stroke="#bae6fd" stroke-width="1.5" stroke-opacity="0.55" fill="none"/>
       <polygon points="760,116 750,132 762,136 772,126" fill="#e0f2fe" opacity="0.25"/>
     </g>
 
-    <!-- Layer B: Mid-Distance Mountain Foothills -->
+    <!-- Mid-Distance Mountain Foothills -->
     <path d="M -10,215 
              L 50,172 L 120,185 L 185,162 L 250,180 L 320,156 
              L 380,176 L 450,158 L 520,178 L 590,152 L 660,176 
              L 730,154 L 805,175 L 870,158 L 915,170 L 915,230 L -10,230 Z" 
           fill="url(#mountGradMid)"/>
 
-    <!-- ==================== 5. GLOWING VALLEY MIST ==================== -->
+    <!-- ==================== 6. GLOWING VALLEY MIST ==================== -->
     <g filter="url(#mistBlur)">
-      <!-- Lower Mountain Mist Band -->
       <path class="mist-layer1" d="M -80,165 Q 160,145 420,165 T 920,155 T 1100,165 L 1100,205 L -80,205 Z" fill="url(#mistGrad1)"/>
-      <!-- Treetop Forest Mist Ribbon -->
       <path class="mist-layer2" d="M -80,178 Q 220,160 500,178 T 950,168 T 1100,178 L 1100,215 L -80,215 Z" fill="url(#mistGrad2)"/>
     </g>
 
-    <!-- ==================== 6. PINE FOREST SILHOUETTES ==================== -->
-    <!-- Distant Forest Layer (Midnight Navy) -->
+    <!-- ==================== 7. PINE FOREST SILHOUETTES ==================== -->
+    <!-- Distant Forest Layer -->
     <path d="M 0,205 
       L 15,190 L 30,205 L 45,185 L 60,208 L 75,192 L 95,210 L 115,180 L 135,212 L 155,195 L 180,215 
       L 205,182 L 230,210 L 255,190 L 280,212 L 310,185 L 335,210 L 360,195 L 390,215 L 420,180 
@@ -499,7 +538,7 @@
       L 730,192 L 760,215 L 795,180 L 825,210 L 855,188 L 880,212 L 900,195 L 900,240 L 0,240 Z" 
       fill="#090d24" opacity="0.9"/>
 
-    <!-- Foreground Forest Layer (Deep Midnight Silhouette) -->
+    <!-- Foreground Forest Layer -->
     <path d="M -10,240 
       L 5,175 L 20,205 L 35,165 L 50,205 L 70,160 L 90,208 L 110,170 L 130,210 
       L 150,155 L 175,215 L 200,175 L 225,210 L 250,160 L 275,208 L 305,170 L 330,212 
@@ -514,7 +553,7 @@
     <polygon points="360,132 350,155 356,155 345,180 352,180 338,210 382,210 370,180 376,180 366,155 372,155" fill="#02030a"/>
     <polygon points="695,130 685,155 692,155 680,180 688,180 675,212 715,212 702,180 710,180 698,155 705,155" fill="#02030a"/>
 
-    <!-- ==================== 7. GLOWING FIREFLY PARTICLES ==================== -->
+    <!-- ==================== 8. GLOWING FIREFLY PARTICLES ==================== -->
     <g fill="#93c5fd" filter="url(#starGlow)">
       <circle cx="85" cy="180" r="1.3" class="ff-1"/>
       <circle cx="165" cy="172" r="1.1" class="ff-2"/>
@@ -526,7 +565,7 @@
       <circle cx="820" cy="175" r="1.4" class="ff-2"/>
     </g>
 
-    <!-- Subtle Outer Border Glow (Theme Accent) -->
+    <!-- Outer Border Glow -->
     <rect width="900" height="240" rx="16" ry="16" fill="none" stroke="#3b82f6" stroke-opacity="0.3" stroke-width="1.5"/>
   </g>
 </svg>

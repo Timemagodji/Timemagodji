@@ -91,16 +91,16 @@
   </defs>
 
   <style>
-    /* 1. Sky drift right */
+    /* 1. Sky drift right (เร่งความเร็วการเคลื่อนท้องฟ้าจาก 45s เป็น 12s) */
     @keyframes driftRight {
-      0% { transform: translateX(-120px); }
-      100% { transform: translateX(60px); }
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(50px); }
     }
     .sky-drift-right {
-      animation: driftRight 45s linear infinite alternate;
+      animation: driftRight 12s ease-in-out infinite alternate;
     }
 
-    /* 2. Aurora wave ripples */
+    /* 2. Aurora wave ripples (เร่งคลื่นแสงเหนือให้พริ้วไหวเร็วขึ้น) */
     @keyframes auroraRipple1 {
       0%, 100% {
         transform: translateX(-40px) skewX(-2deg) scaleY(1);
@@ -114,7 +114,7 @@
 
     @keyframes auroraRipple2 {
       0%, 100% {
-        transform: translateX(20px) skewX(3deg) scaleY(1.15);
+        transform: translateX(25px) skewX(3deg) scaleY(1.15);
         opacity: 0.5;
       }
       50% {
@@ -129,63 +129,63 @@
     }
 
     .aurora-wave1 {
-      animation: auroraRipple1 12s ease-in-out infinite, auroraColorPulse 16s ease-in-out infinite;
+      animation: auroraRipple1 5s ease-in-out infinite, auroraColorPulse 7s ease-in-out infinite;
       transform-origin: 450px 80px;
     }
 
     .aurora-wave2 {
-      animation: auroraRipple2 15s ease-in-out infinite;
+      animation: auroraRipple2 6s ease-in-out infinite;
       transform-origin: 450px 100px;
     }
 
-    /* 3. Star pulse animation */
-    @keyframes starPulseA { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-    @keyframes starPulseB { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.2; } }
-    .sp-a { animation: starPulseA 3s infinite ease-in-out; }
-    .sp-b { animation: starPulseB 4s infinite ease-in-out; }
+    /* 3. Star pulse animation (เร่งการกะพริบของดวงดาว) */
+    @keyframes starPulseA { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+    @keyframes starPulseB { 0%, 100% { opacity: 0.95; } 50% { opacity: 0.2; } }
+    .sp-a { animation: starPulseA 1.6s infinite ease-in-out; }
+    .sp-b { animation: starPulseB 2.0s infinite ease-in-out; }
 
-    /* 4. Multi-Directional Pseudo-Random Meteor Shower */
-    @keyframes fallRight {
+    /* 4. Multi-Directional and Full-Screen Meteor Shower */
+    @keyframes fallR {
       0% { transform: translate(0, 0); opacity: 0; }
       3% { opacity: 1; }
-      15% { transform: translate(320px, 185px); opacity: 0.85; }
-      18% { transform: translate(350px, 205px); opacity: 0; }
-      100% { transform: translate(350px, 205px); opacity: 0; }
+      14% { transform: translate(210px, 145px); opacity: 0.9; }
+      17% { transform: translate(240px, 165px); opacity: 0; }
+      100% { transform: translate(240px, 165px); opacity: 0; }
     }
 
-    @keyframes fallLeft {
+    @keyframes fallL {
       0% { transform: translate(0, 0); opacity: 0; }
       3% { opacity: 1; }
-      15% { transform: translate(-320px, 185px); opacity: 0.85; }
-      18% { transform: translate(-350px, 205px); opacity: 0; }
-      100% { transform: translate(-350px, 205px); opacity: 0; }
+      14% { transform: translate(-210px, 145px); opacity: 0.9; }
+      17% { transform: translate(-240px, 165px); opacity: 0; }
+      100% { transform: translate(-240px, 165px); opacity: 0; }
     }
 
-    @keyframes fallSteep {
+    @keyframes fallS {
       0% { transform: translate(0, 0); opacity: 0; }
       3% { opacity: 1; }
-      15% { transform: translate(140px, 220px); opacity: 0.85; }
-      18% { transform: translate(160px, 245px); opacity: 0; }
-      100% { transform: translate(160px, 245px); opacity: 0; }
+      14% { transform: translate(110px, 190px); opacity: 0.9; }
+      17% { transform: translate(125px, 215px); opacity: 0; }
+      100% { transform: translate(125px, 215px); opacity: 0; }
     }
 
-    .mr-1 { opacity: 0; animation: fallRight 4.7s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.2s; }
-    .mr-2 { opacity: 0; animation: fallRight 5.3s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.6s; }
-    .mr-3 { opacity: 0; animation: fallRight 6.1s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.8s; }
-    .mr-4 { opacity: 0; animation: fallRight 4.9s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.7s; }
-    .mr-5 { opacity: 0; animation: fallRight 5.7s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.9s; }
-    .mr-6 { opacity: 0; animation: fallRight 6.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 4.4s; }
+    .m-r1 { opacity: 0; animation: fallR 4.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.2s; }
+    .m-r2 { opacity: 0; animation: fallR 5.1s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.5s; }
+    .m-r3 { opacity: 0; animation: fallR 4.7s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.7s; }
+    .m-r4 { opacity: 0; animation: fallR 5.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.6s; }
+    .m-r5 { opacity: 0; animation: fallR 4.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.1s; }
+    .m-r6 { opacity: 0; animation: fallR 5.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.2s; }
 
-    .ml-1 { opacity: 0; animation: fallLeft 4.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.5s; }
-    .ml-2 { opacity: 0; animation: fallLeft 5.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.9s; }
-    .ml-3 { opacity: 0; animation: fallLeft 6.3s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.2s; }
-    .ml-4 { opacity: 0; animation: fallLeft 5.1s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 4.1s; }
-    .ml-5 { opacity: 0; animation: fallLeft 5.9s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.3s; }
+    .m-l1 { opacity: 0; animation: fallL 4.4s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.6s; }
+    .m-l2 { opacity: 0; animation: fallL 5.3s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.8s; }
+    .m-l3 { opacity: 0; animation: fallL 4.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.9s; }
+    .m-l4 { opacity: 0; animation: fallL 5.7s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.8s; }
+    .m-l5 { opacity: 0; animation: fallL 4.6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.9s; }
 
-    .ms-1 { opacity: 0; animation: fallSteep 4.8s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.1s; }
-    .ms-2 { opacity: 0; animation: fallSteep 5.6s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.6s; }
-    .ms-3 { opacity: 0; animation: fallSteep 6.7s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.9s; }
-    .ms-4 { opacity: 0; animation: fallSteep 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.3s; }
+    .m-s1 { opacity: 0; animation: fallS 4.9s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 0.4s; }
+    .m-s2 { opacity: 0; animation: fallS 5.5s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 1.7s; }
+    .m-s3 { opacity: 0; animation: fallS 4.3s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 3.1s; }
+    .m-s4 { opacity: 0; animation: fallS 5.2s cubic-bezier(0.15, 0.85, 0.35, 1) infinite; animation-delay: 2.4s; }
   </style>
 
   <!-- Clip Path to avoid spillover -->
@@ -197,7 +197,7 @@
     <!-- Base Sky -->
     <rect width="900" height="240" fill="url(#nightSky)"/>
 
-    <!-- ==================== 1. STARS BACKGROUND ==================== -->
+    <!-- ==================== 1. STARS BACKGROUND (MOVING SKY) ==================== -->
     <g class="sky-drift-right">
       <!-- Dim/Medium Background Stars -->
       <g fill="#ffffff" class="sp-a">
@@ -242,7 +242,7 @@
       </g>
     </g>
 
-    <!-- ==================== 2. WAVING NORTHERN LIGHTS (AURORA) ==================== -->
+    <!-- ==================== 2. WAVING NORTHERN LIGHTS (FAST AURORA) ==================== -->
     <g mask="url(#auroraMask)" filter="url(#auroraBlur)">
       <!-- Main Aurora Ribbon -->
       <path class="aurora-wave1" d="M -80,60 Q 150,15 380,55 T 820,40 T 1100,55 L 1100,165 L -80,165 Z" fill="url(#auroraGlow1)"/>
@@ -251,71 +251,72 @@
       <path class="aurora-wave2" d="M -80,85 Q 220,40 500,80 T 920,45 T 1100,75 L 1100,175 L -80,175 Z" fill="url(#auroraGlow2)"/>
     </g>
 
-    <!-- ==================== 3. RANDOMIZED METEOR SHOWER (ALL DIRECTIONS & SIDES) ==================== -->
-    <!-- กลุ่มที่ 1: พุ่งลงทางขวา (East-Bound) กระจายฝั่งซ้ายและกลาง -->
-    <g transform="translate(-40, 10)" class="mr-1">
+    <!-- ==================== 3. ALL-REGION RANDOM METEOR SHOWER ==================== -->
+    
+    <!-- [โซนฝั่งซ้าย: x = 0 - 300] -->
+    <g transform="translate(30, -25)" class="m-r1">
       <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(100, -35)" class="mr-2">
-      <line x1="-60" y1="-34" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.4" stroke-linecap="round"/>
+    <g transform="translate(260, -25)" class="m-l1">
+      <line x1="50" y1="-28" x2="0" y2="0" stroke="url(#mGradBlueL)" stroke-width="2.3" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.2" fill="#bae6fd" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(250, -35)" class="mr-3">
-      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.1" stroke-linecap="round"/>
+    <g transform="translate(110, -25)" class="m-s1">
+      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.1" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(420, -35)" class="mr-4">
-      <line x1="-65" y1="-37" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.3" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(560, -35)" class="mr-5">
-      <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.0" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(700, -30)" class="mr-6">
-      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
-    </g>
-
-    <!-- กลุ่มที่ 2: พุ่งลงทางซ้าย (West-Bound) ตกลงมาฝั่งซ้ายและกลาง ทำให้ดาวตกกระจายทั่วจอ -->
-    <g transform="translate(320, -35)" class="ml-1">
-      <line x1="50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteL)" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(480, -35)" class="ml-2">
-      <line x1="60" y1="-34" x2="0" y2="0" stroke="url(#mGradBlueL)" stroke-width="2.4" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#bae6fd" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(680, -35)" class="ml-3">
-      <line x1="55" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigoL)" stroke-width="2.1" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(860, -30)" class="ml-4">
-      <line x1="65" y1="-37" x2="0" y2="0" stroke="url(#mGradBlueL)" stroke-width="2.3" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
-    </g>
-    <g transform="translate(940, 20)" class="ml-5">
-      <line x1="50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteL)" stroke-width="2.0" stroke-linecap="round"/>
+    <g transform="translate(-10, 15)" class="m-r2">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.0" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
 
-    <!-- กลุ่มที่ 3: พุ่งชันลงมาตรงๆ (Steep Angle) เพิ่มมิติแนวตั้ง กระจายทั้งซ้าย-กลาง-ขวา -->
-    <g transform="translate(60, -35)" class="ms-1">
-      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- [โซนกลางจอ: x = 300 - 600] -->
+    <g transform="translate(330, -25)" class="m-r3">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(540, -25)" class="m-l2">
+      <line x1="55" y1="-31" x2="0" y2="0" stroke="url(#mGradIndigoL)" stroke-width="2.2" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(360, -35)" class="ms-2">
+    <g transform="translate(430, -25)" class="m-s2">
       <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.1" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.1" fill="#ffffff" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(620, -35)" class="ms-3">
-      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.3" stroke-linecap="round"/>
+    <g transform="translate(370, 15)" class="m-r4">
+      <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.0" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
+    </g>
+
+    <!-- [โซนฝั่งขวา: x = 600 - 900 จัดเต็มเป็นพิเศษให้เห็นชัดเจนตลอดเวลา] -->
+    <g transform="translate(620, -25)" class="m-r5">
+      <line x1="-55" y1="-31" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.3" fill="#bae6fd" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(840, -25)" class="m-l3">
+      <line x1="55" y1="-31" x2="0" y2="0" stroke="url(#mGradWhiteL)" stroke-width="2.3" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(730, -25)" class="m-s3">
+      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradIndigoR)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.2" fill="#c7d2fe" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(680, 15)" class="m-r6">
+      <line x1="-50" y1="-28" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.1" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(890, 10)" class="m-l4">
+      <line x1="60" y1="-34" x2="0" y2="0" stroke="url(#mGradBlueL)" stroke-width="2.4" stroke-linecap="round"/>
       <circle cx="0" cy="0" r="2.2" fill="#93c5fd" filter="url(#starGlow)"/>
     </g>
-    <g transform="translate(800, -35)" class="ms-4">
-      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradWhiteR)" stroke-width="2.0" stroke-linecap="round"/>
-      <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="url(#starGlow)"/>
+    <g transform="translate(780, -25)" class="m-l5">
+      <line x1="50" y1="-28" x2="0" y2="0" stroke="url(#mGradIndigoL)" stroke-width="2.1" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#c7d2fe" filter="url(#starGlow)"/>
+    </g>
+    <g transform="translate(820, -25)" class="m-s4">
+      <line x1="-25" y1="-45" x2="0" y2="0" stroke="url(#mGradBlueR)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="2.1" fill="#bae6fd" filter="url(#starGlow)"/>
     </g>
 
     <!-- ==================== 4. PINE FOREST SILHOUETTES ==================== -->

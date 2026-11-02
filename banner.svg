@@ -125,14 +125,14 @@
     .sp-a { animation: starPulseA 3s infinite ease-in-out; }
     .sp-b { animation: starPulseB 4s infinite ease-in-out; }
 
-    /* 4. Falling meteors */
+    /* 4. Falling meteors (ปรับให้ตกเร็วขึ้น) */
     @keyframes meteorFall {
       0% {
         transform: translate(0, 0);
         opacity: 0;
       }
-      10% { opacity: 1; }
-      25% {
+      6% { opacity: 1; }
+      17% {
         transform: translate(320px, 200px);
         opacity: 0;
       }
@@ -146,11 +146,11 @@
       opacity: 0;
       animation: meteorFall 14s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
     }
-    .meteor-1 { animation-delay: 2s; }
-    .meteor-2 { animation-delay: 5s; }
-    .meteor-3 { animation-delay: 8s; }
-    .meteor-4 { animation-delay: 11s; }
-    .meteor-5 { animation-delay: 13.5s; }
+    .meteor-1 { animation-delay: 1.5s; }
+    .meteor-2 { animation-delay: 4.2s; }
+    .meteor-3 { animation-delay: 7s; }
+    .meteor-4 { animation-delay: 9.8s; }
+    .meteor-5 { animation-delay: 12.2s; }
   </style>
 
   <!-- Clip Path to avoid spillover -->

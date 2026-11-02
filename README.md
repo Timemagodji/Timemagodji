@@ -1,10 +1,7 @@
 <div align="center">
   <img src="./banner.svg" width="100%" />
 
-  # Hi there, I'm Time 👋
-  
-  🎓 **Computer Engineering Student** @ Rajamangala University of Technology Isan (RMUTI)  
-  💡 Passionate about **Machine Learning**, **Computer Vision**, and **Cross-Platform Mobile Apps (Flutter)**
+  🎓 **Computer Engineering Student** @ Rajamangala University of Technology Isan (RMUTI)
 
   <p align="center">
     <a href="https://github.com/Timemagodji?tab=repositories">
